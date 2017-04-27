@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us" ng-app="angularApp">
     <head>
-        <title>Introduction to AngularJS</title>
+        <title>Krossover Challenge</title>
+        <link rel="icon" href="./angular.png">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta charset="UTF-8">
 
@@ -55,7 +56,7 @@
                 
                 <h3>Rules</h3>
                 <ul>
-                    <li ng-repeat="rule in rules">
+                    <li ng-repeat="rule in rules" ng-cloak>
                         {{ rule.rulename }}
                     </li>
                 </ul>
