@@ -15,19 +15,19 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
     
     $scope.clips = [
         {id: 1,
-         timeInfo:{
+             timeInfo:{
                 start:1,
                 stop: 1
             }
         },
         {id: 2,
-        timeInfo:{
+            timeInfo:{
                 start:1,
                 stop: 1
             }
         },
         {id: 3,
-        timeInfo:{
+            timeInfo:{
                 start:1,
                 stop: 1
             }
