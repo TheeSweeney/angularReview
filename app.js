@@ -11,11 +11,7 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
         return $filter('lowercase')($scope.handle)
     }
     
-    $scope.$watch('handle', function(newValue, oldValue) {
-        $log.info('Changed')
-        $log.log('Old: ' + oldValue);
-        $log.log('New: ' + newValue);
-    })
+    $scope.characters = 5;
 }]);
 
 
