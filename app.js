@@ -2,9 +2,14 @@
 var angularApp = angular.module('angularApp', []);
 
 // CONTROLLERS
-angularApp.controller('mainController', ['$scope', '$timeout', function ($scope, $timeout) {
+angularApp.controller('mainController', ['$scope', '$filter', function ($scope, $filter) {
+    
+    
     $scope.handle = ''
     
+    $scope.lowercaseHandle = function(){
+        return $filter('lowercase')($scope.handle)
+    }
     
 }]);
 
