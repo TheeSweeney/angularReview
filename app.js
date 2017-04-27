@@ -13,15 +13,32 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
     
     $scope.characters = 5;
     
-    $scope.rules = [
-        {rulename: "Must be 5 characters"},
-        {rulename: "Must not be use elsewhere"},
-        {rulename: "Must be cool. No Dweebs"}
+    $scope.clips = [
+        {id: 1,
+         timeInfo:{
+                start:1,
+                stop: 1
+            }
+        },
+        {id: 2,
+        timeInfo:{
+                start:1,
+                stop: 1
+            }
+        },
+        {id: 3,
+        timeInfo:{
+                start:1,
+                stop: 1
+            }
+        }
     ]
-    
-    $scope.alertClick = function(){
-        alert('sup')
+    for(var i = 0; i < $scope.clips.length; i++){
+        $log.log($scope.clips[i].timeInfo.start)
     }
+        $scope.alertClick = function(){
+            alert('sup')
+        }
 }]);
 
 
