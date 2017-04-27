@@ -23,10 +23,12 @@
 			</nav>
 		</header>
 
-        <div class="container">
+        <div class="container" id='outermostContainer'>
 
 			<div ng-controller="mainController">
-                <video id="videoWindow" ng-src="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4" ng-cloak controls ></video>
+                <video id="videoWindow" ng-cloak controls >
+                    <source id="videoSource" ng-src="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4" />
+                </video>
                 
                 <div>
                     Create A New Clip
@@ -39,7 +41,7 @@
                     <input type="number"  ng-model='start'/>
                     <label>Stop time</label>
                     <input type="number"  ng-model='stop'/>
-                    <input type="button" class="btn" value="Save Clip" ng-click="saveClip()" ng-show="start && stop && start < 54 && stop < 54"/>
+                    <input type="button" class="btn" value="Save Clip" ng-click="saveClip()" ng-show="start && stop && start < 55 && stop < 55"/>
                 </div>
 
                 <p ng-hide="start && stop">

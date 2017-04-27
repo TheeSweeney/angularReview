@@ -48,8 +48,25 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
     $scope.playClip = function(timeInfo){
         var fragmentSuffix = "#t=" + timeInfo.start + ',' + timeInfo.stop;
         
+        var newSource = document.createElement('source');
+
+        newSource.setAttribute('src', 'http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4' + fragmentSuffix)
+                                
+
+
+        var newVideo = document.createElement('video')
+
+        newVideo.setAttribute('id', 'videoWindow')
+        newVideo.setAttribute('controls', '')
+        newVideo.setAttribute('autoplay', '')
+        newVideo.append(newSource)
+
         document.getElementById('videoWindow')
-                .setAttribute('ng-src', 'http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4' + fragmentSuffix)
+                .remove()
+
+        document.getElementById('outermostContainer')
+                .prepend(newVideo)
+
     }
 
     $scope.deleteClip = function(id){
