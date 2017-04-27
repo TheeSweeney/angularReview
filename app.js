@@ -2,7 +2,7 @@
 var angularApp = angular.module('angularApp', []);
 
 // CONTROLLERS
-angularApp.controller('mainController', ['$scope', '$filter', function ($scope, $filter) {
+angularApp.controller('mainController', ['$scope', '$filter', '$log', function ($scope, $filter, $log) {
     
     
     $scope.handle = ''
@@ -11,6 +11,11 @@ angularApp.controller('mainController', ['$scope', '$filter', function ($scope, 
         return $filter('lowercase')($scope.handle)
     }
     
+    $scope.$watch('handle', function(newValue, oldValue) {
+        $log.info('Changed')
+        $log.log('Old: ' + oldValue);
+        $log.log('New: ' + newValue);
+    })
 }]);
 
 
