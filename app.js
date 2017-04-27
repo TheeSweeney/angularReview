@@ -11,6 +11,9 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
     $scope.start;
     $scope.stop;
     $scope.counter = 1;
+    $scope.updateName;
+    $scope.updateStart;
+    $scope.updateStop;
         
     $scope.clips = [
         {
@@ -51,11 +54,36 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
 
     $scope.deleteClip = function(id){
         console.log($scope.clips.length)
-        for(var i = 0; i < $scope.clips.length; i++){
-                console.log('here')
+        for(var i = 0; i < $scope.clips.length; i++){//TODO factor out this search function into it's own thing for DRYness
             if($scope.clips[i].id == id && id !== 0){
               $scope.clips.splice(i,1);
               return;  
+            } 
+        }
+    }
+
+    $scope.editClip = function(clipID){
+        document.getElementById('editBox'+clipID).classList.remove('ng-hide');
+
+        for(var i = 0; i < $scope.clips.length; i++){
+            if($scope.clips[i].id == clipID){
+              $scope.updateName = $scope.clips[i].name
+              $scope.updateStart = $scope.clips[i].timeInfo.start
+              $scope.updateStop = $scope.clips[i].timeInfo.stop
+            } 
+        }
+    }
+
+    $scope.updateClip = function(params){
+        document.getElementById('editBox'+params.id).classList.add('ng-hide');
+
+        for(var i = 0; i < $scope.clips.length; i++){
+            if($scope.clips[i].id == params.id){
+                console.log($scope.clips[i])
+              $scope.clips[i].name = params.name;
+              $scope.clips[i].timeInfo.start = params.start;
+              $scope.clips[i].timeInfo.stop = params.stop; 
+              console.log($scope.clips[i])
             } 
         }
     }

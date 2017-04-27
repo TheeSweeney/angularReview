@@ -31,6 +31,7 @@
                 <div>
                     Create A New Clip
                 </div>
+
                 <div>
                     <label>Clip Name</label>
                     <input type="text"  ng-model='name'/>
@@ -40,19 +41,38 @@
                     <input type="number"  ng-model='stop'/>
                     <input type="button" class="btn" value="Save Clip" ng-click="saveClip()" ng-show="start && stop && start < 54 && stop < 54"/>
                 </div>
+
                 <p ng-hide="start && stop">
                     Please enter a start and stop time
                 </p>
                 <p ng-show="start > 54 || stop > 54">
                     Please enter digits less than the length of the video
                 </p>
+
                 <hr />
+
                 <h1>Clips</h1>
+
                 <ul>
                     <li ng-repeat="clip in clips" ng-cloak>
-                        {{ clip.name }}, start: {{ clip.timeInfo.start}}, stop: {{clip.timeInfo.stop}}
+                        <h4>{{ clip.name }}</h4> 
+                        Start: {{ clip.timeInfo.start}} Stop: {{clip.timeInfo.stop}}
                         <input type="button" value="Play" ng-click="playClip(clip.timeInfo)">
-                        <input type="button" value="Delete" ng-click="deleteClip(clip.id)">
+                        <input type="button" value="Delete" ng-click="deleteClip(clip.id)" ng-hide="clip.id === 0">
+                        <input type="button" value="Edit" ng-click="editClip(clip.id)" ng-hide="clip.id === 0">
+                        <div id="editBox{{clip.id}}" class="ng-hide">
+                            <label>Clip Name</label>
+                            <input type="text"  ng-model='updateName'/>
+                            <label>Start time</label>
+                            <input type="number"  ng-model='updateStart'/>
+                            <label>Stop time</label>
+                            <input type="number"  ng-model='updateStop'/>
+                            <input type="button" class="btn" value="Save" ng-click="updateClip({id: clip.id, name: updateName, start: updateStart, stop: updateStop})" ng-show="updateStart && updateStop && updateStart < 54 && updateStop < 54"/>
+                            
+                            <p ng-show="updateStart > 54 || updateStop > 54">
+                                Please enter digits less than the length of the video
+                            </p>
+                        </div>
                     </li>
                 </ul>
             </div>
