@@ -18,6 +18,10 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
         {rulename: "Must not be use elsewhere"},
         {rulename: "Must be cool. No Dweebs"}
     ]
+    
+    $scope.alertClick = function(){
+        alert('sup')
+    }
 }]);
 
 
