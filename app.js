@@ -4,45 +4,36 @@ var angularApp = angular.module('angularApp', []);
 // CONTROLLERS
 angularApp.controller('mainController', ['$scope', '$filter', '$log', function ($scope, $filter, $log) {
     
-    
-    $scope.start = '';
-    $scope.stop = '';
-    
-    
-    $scope.characters = 5;
-    
+    $scope.name = "Clip 1";
+    $scope.start;
+    $scope.stop;
+        
     $scope.clips = [
-        {id: 1,
-         timeInfo:{
-            start:1,
-            stop: 1
-            }
-        },
-        {id: 2,
+        {
+        id: 1,
+        name: "Full Clip",
         timeInfo:{
-            start:1,
-            stop: 1
-            }
-        },
-        {id: 3,
-        timeInfo:{
-            start:1,
-            stop: 1
+            start:0,
+            stop: 52
             }
         }
     ]
 
     $scope.saveClip = function(){
-        console.log('butt')
+        console.log()
         $scope.clips.push({
             id: $scope.clips.length,
+            name: $scope.name,
             timeInfo: {
                 start: $scope.start,
                 stop: $scope.stop
             }
         })
+
+        $scope.name = 'Clip ' + $scope.clips.length
+        $scope.start;
+        $scope.stop;
     }
-    console.log($scope.clips)
 }]);
 
 

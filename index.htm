@@ -32,20 +32,22 @@
                     Create A New Clip
                 </div>
                 <div>
-                    <label>Start</label>
-                    <input type="text" ng-model='start'/>
-                    <label>Stop</label>
-                    <input type="text" ng-model='stop'/>
+                    <label>Clip Name</label>
+                    <input type="text"  ng-model='name'/>
+                    <label>Start time</label>
+                    <input type="number"  ng-model='start'/>
+                    <label>Stop time</label>
+                    <input type="number"  ng-model='stop'/>
+                    <input type="button" class="btn" value="Save Clip" ng-click="saveClip()" ng-show="start && stop"/>
                 </div>
-                <input type="button" class="btn" value="Save Clip" ng-click="saveClip()"/>
+                <p ng-hide="start && stop">
+                    Please enter a start and stop time
+                </p>
                 <hr />
-                
                 <h1>Clips</h1>
-                
-                <h3>Rules</h3>
                 <ul>
                     <li ng-repeat="clip in clips" ng-cloak>
-                        id:{{ clip.id }}, start: {{ clip.timeInfo.start}}, stop: {{clip.timeInfo.stop}}
+                        {{ clip.name }}, start: {{ clip.timeInfo.start}}, stop: {{clip.timeInfo.stop}}
                     </li>
                 </ul>
             </div>
