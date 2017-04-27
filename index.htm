@@ -38,10 +38,13 @@
                     <input type="number"  ng-model='start'/>
                     <label>Stop time</label>
                     <input type="number"  ng-model='stop'/>
-                    <input type="button" class="btn" value="Save Clip" ng-click="saveClip()" ng-show="start && stop"/>
+                    <input type="button" class="btn" value="Save Clip" ng-click="saveClip()" ng-show="start && stop && start < 54 && stop < 54"/>
                 </div>
                 <p ng-hide="start && stop">
                     Please enter a start and stop time
+                </p>
+                <p ng-show="start > 54 || stop > 54">
+                    Please enter digits less than the length of the video
                 </p>
                 <hr />
                 <h1>Clips</h1>
@@ -49,6 +52,7 @@
                     <li ng-repeat="clip in clips" ng-cloak>
                         {{ clip.name }}, start: {{ clip.timeInfo.start}}, stop: {{clip.timeInfo.stop}}
                         <input type="button" value="Play" ng-click="playClip(clip.timeInfo)">
+                        <input type="button" value="Delete" ng-click="deleteClip(clip.id)">
                     </li>
                 </ul>
             </div>

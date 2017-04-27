@@ -10,6 +10,7 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
     $scope.name = "Clip 1";
     $scope.start;
     $scope.stop;
+    $scope.counter = 1;
         
     $scope.clips = [
         {
@@ -23,9 +24,10 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
     ]
 
     $scope.saveClip = function(){
-        console.log()
+        
+
         $scope.clips.push({
-            id: $scope.clips.length,
+            id: $scope.counter,
             name: $scope.name,
             timeInfo: {
                 start: $scope.start,
@@ -33,17 +35,29 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
             }
         })
 
-        $scope.name = 'Clip ' + $scope.clips.length
-        $scope.start;
-        $scope.stop;
+        $scope.counter++;
+
+        $scope.name = 'Clip ' + $scope.counter
+        $scope.start = null;
+        $scope.stop = null;
     }
 
     $scope.playClip = function(timeInfo){
         var fragmentSuffix = "#t=" + timeInfo.start + ',' + timeInfo.stop;
-        console.log(fragmentSuffix)
         
         document.getElementById('videoWindow')
                 .setAttribute('ng-src', 'http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4' + fragmentSuffix)
+    }
+
+    $scope.deleteClip = function(id){
+        console.log($scope.clips.length)
+        for(var i = 0; i < $scope.clips.length; i++){
+                console.log('here')
+            if($scope.clips[i].id == id && id !== 0){
+              $scope.clips.splice(i,1);
+              return;  
+            } 
+        }
     }
 }]);
 
