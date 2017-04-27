@@ -7,8 +7,6 @@
         <meta charset="UTF-8">
 
         <!-- load bootstrap and fontawesome via CDN -->
-        <link rel="stylesheet" href="./styles.css" />
-        
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="app.js"></script>
@@ -28,9 +26,8 @@
         <div class="container">
 
 			<div ng-controller="mainController">
-                <div id="videoBox">
-                    <video src="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4" controls ></video>
-                </div>
+                <video src="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4" controls ></video>
+                
                 <div>
                     Create A New Clip
                 </div>
@@ -40,11 +37,12 @@
                     <label>Stop</label>
                     <input type="text" ng-model='stop'/>
                 </div>
-                <input type="button" class="btn" value="Save Clip" ng-click="saveClip"/>
-                </div>
+                <input type="button" class="btn" value="Save Clip" ng-click="saveClip()"/>
                 <hr />
                 
-                <h1>Clips {{ lowercaseHandle() }}</h1>
+                <h1>Clips</h1>
+                
+                <h3>Rules</h3>
                 <ul>
                     <li ng-repeat="clip in clips" ng-cloak>
                         id:{{ clip.id }}, start: {{ clip.timeInfo.start}}, stop: {{clip.timeInfo.stop}}

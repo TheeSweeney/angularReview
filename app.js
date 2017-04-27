@@ -8,15 +8,6 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
     $scope.start = '';
     $scope.stop = '';
     
-    $scope.saveClip = function(){
-        $scope.clips.push({
-            id: clips.length,
-            timeInfo: {
-                start: $scope.start,
-                stop: $scope.stop
-            }
-        })
-    }
     
     $scope.characters = 5;
     
@@ -40,6 +31,18 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
             }
         }
     ]
+
+    $scope.saveClip = function(){
+        console.log('butt')
+        $scope.clips.push({
+            id: $scope.clips.length,
+            timeInfo: {
+                start: $scope.start,
+                stop: $scope.stop
+            }
+        })
+    }
+    console.log($scope.clips)
 }]);
 
 
