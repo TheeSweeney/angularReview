@@ -4,13 +4,16 @@ var angularApp = angular.module('angularApp', []);
 // CONTROLLERS
 angularApp.controller('mainController', ['$scope', '$filter', '$log', function ($scope, $filter, $log) {
     
+
+    $scope.currentStart = 2;
+    $scope.currentEnd = 52
     $scope.name = "Clip 1";
     $scope.start;
     $scope.stop;
         
     $scope.clips = [
         {
-        id: 1,
+        id: 0,
         name: "Full Clip",
         timeInfo:{
             start:0,
@@ -33,6 +36,14 @@ angularApp.controller('mainController', ['$scope', '$filter', '$log', function (
         $scope.name = 'Clip ' + $scope.clips.length
         $scope.start;
         $scope.stop;
+    }
+
+    $scope.playClip = function(timeInfo){
+        var fragmentSuffix = "#t=" + timeInfo.start + ',' + timeInfo.stop;
+        console.log(fragmentSuffix)
+        
+        document.getElementById('videoWindow')
+                .setAttribute('ng-src', 'http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4' + fragmentSuffix)
     }
 }]);
 

@@ -26,7 +26,7 @@
         <div class="container">
 
 			<div ng-controller="mainController">
-                <video src="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4" controls ></video>
+                <video id="videoWindow" ng-src="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4" ng-cloak controls ></video>
                 
                 <div>
                     Create A New Clip
@@ -48,6 +48,7 @@
                 <ul>
                     <li ng-repeat="clip in clips" ng-cloak>
                         {{ clip.name }}, start: {{ clip.timeInfo.start}}, stop: {{clip.timeInfo.stop}}
+                        <input type="button" value="Play" ng-click="playClip(clip.timeInfo)">
                     </li>
                 </ul>
             </div>
